@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br>
+
+        <form method="POST">
+            {% csrf_token %}
+            新增門檻:
+            <input type="text" name="newCLLimit">
+            <input type="text" name="newCLPercent">
+            <input type="submit" name="addNewCL" value="新增"><br>
+
+            <table border="1" cellpadding="0" cellspacing="0">
+                <th>收入門檻</th>
+                <th>提成百分比</th>
+            
+                {% for res in CLNow %}    
+                <tr>
+                    <td>{{ res.CLIncomeLimit }}</td>
+                    <td>{{ res.CLBonusPercent }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            規則名稱: <input type="text" name="commName"><br>
+            規則編號: <input type="text" name="commCode">
+            目前編號: {{codeNow}}<br>
+            <input type="submit" name="completeAdd" value="完成">
+        </form>
+    </body>
+</html>
+

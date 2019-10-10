@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>
+
+        <form method='post'>
+            {% csrf_token %}
+            姓名: <input type="text" name="cusName" value={{queryRes.cusName}}> <br>
+            編號: <input type="text" name="cusCode" value={{queryRes.cusCode}}> <br>
+            電話: <input type="text" name="cusPhoneNum" value={{queryRes.cusPhoneNum}}> <br>
+            性別(F/M): <input type="text" name="cusSex" value={{queryRes.cusSex}}> <br>
+            備註: <input type="text" name="cusRemarks" value={{queryRes.cusRemarks}}> <br>
+                
+            <input type="submit" value="儲存">
+        </form>
+    </body>
+
+</html>

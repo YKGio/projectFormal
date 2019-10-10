@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>
+        
+        <form method="POST">
+            {% csrf_token %}
+            分店名稱:<input type="text" name="shopName"><br>
+            分店編號:<input type="text" name="shopCode"> 目前編號:{{shopCodeNow}}<br>
+            <input type="submit" name="completeAddShop" value="完成">
+        </form>
+    </body>
+</html>

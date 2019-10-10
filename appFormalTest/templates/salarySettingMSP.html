@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br>
+
+        <a href='/addSalarySetting/MSP'>新增多人服務規則</a><br>
+        
+        <form method="POST">
+            {% csrf_token %}
+            搜尋獎金設定: <input type="text" name="searchBonusCode">
+            <input type="submit" name="searchButt" value="搜尋">
+        </form>
+
+        <table border="1" cellpadding="0" cellspacing="0">
+                <th>名稱</th>
+                <th>編號</th>
+                <th>專業操作</th>
+                <th>洗頭</th>
+                <th>吹整造型</th>
+            
+                {% for res in searchRes %}    
+                <tr>
+                    <td><a href='/editSalarySetting/MSP/{{ res.MSPCode }}'>{{ res.MSPName }}</a></td>
+                    <td>{{ res.MSPCode }} </td>
+                    <td>{{ res.MSPemp1 }} </td>
+                    <td>{{ res.MSPemp2 }} </td>
+                    <td>{{ res.MSPemp3 }} </td>
+                    <td><a href='/deleteSalarySetting/MSP/{{ res.MSPCode }}'>刪除 </a></td>
+                </tr>
+                {% endfor %}
+        </table>
+    </body>
+</html>
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>
+
+        <form method='post'>
+            {% csrf_token %}
+            類別: <input type="text" name="stockType"> <br>
+            編號: <input type="text" name="stockCode"> <br>
+            名稱: <input type="text" name="stockName"> <br>
+            牌價: <input type="number" name="stockPrice"> <br>
+                
+            <input type="submit" value="新增">
+        </form>
+    </body>
+
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+
+    {% for shop in shopAll %}    
+        <a href='/index/{{shop.shopCode}}'>{{shop.shopName}}登入</a>
+    {% endfor %}
+    <a href='/administrator'>系統管理員登入</a>
+
+    </body>
+</html>

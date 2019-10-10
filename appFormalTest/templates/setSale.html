@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>
+
+        <form method='post'>
+            {% csrf_token %}
+            銷售顧客: <input type="text" name="cusSearch", value="{{ saleAll.saleCusCode }}">
+                
+            <input type="submit" value="查詢" name="cusBut">
+        </form>
+            
+        <table border="1" cellpadding="0" cellspacing="0">
+            <th>姓名</th>
+            <th>編號</th>
+            <th>電話</th>
+            <th></th>
+
+            {% for res in queryRes %}
+            <tr>
+                <td>{{ res.cusName }} </td>
+                <td>{{ res.cusCode }} </td>
+                <td>{{ res.cusPhoneNum }} </td>
+                <td><a href='/sellingSet/{{res.cusCode}}'>選取</a></td>
+            </tr>
+            {% endfor %} 
+        </table>              
+
+    </body>
+
+</html>

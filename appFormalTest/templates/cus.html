@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>顧客管理</title>
+    </head>
+
+    <a href='/redirectIndex'>回目錄</a><br/>
+    
+    <form method='post'>
+        {% csrf_token %}
+        {{ cusF }}
+        <input type="submit" value="查詢">
+    </form>
+
+    <a href='/addCus'>新客戶</a>
+
+    {{ errormessage }}
+
+    <table border="1" cellpadding="0" cellspacing="0">
+        <th>姓名</th>
+        <th>編號</th>
+        <th>電話</th>
+        <!-- <th>生日</th> -->
+        <th></th>
+
+        {% for res in queryRes %}    
+        <tr>
+            <td><a href = '/editCus/{{ res.cusCode }}'>{{ res.cusName }}</a></td>
+            <td>{{ res.cusCode }} </td>
+            <td>{{ res.cusPhoneNum }} </td>
+            <!-- <td>{{ res.cusBirthDate }} </td> -->
+            <td><a href = '/delete/{{ res.cusCode }}'>刪除 </a></td>
+        </tr>
+        {% endfor %}
+    
+    </table>
+
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+
+    <a href='/redirectIndex'>回目錄</a><br/>
+
+    <form method='post'>
+        {% csrf_token %}
+        查詢商品: <input type="text" name="stockSearch">
+        <input type="submit" value="查詢" name="stockSearchBut">
+    </form>
+
+    <table border="1" cellpadding="0" cellspacing="0">
+        <th>類別</th>
+        <th>編號</th>
+        <th>名稱</th>
+        <th>牌價</th>
+
+        {% for res in queryRes %}    
+        <tr>
+            <td>{{ res.stockType }} </td>
+            <td>{{ res.stockCode }} </td>
+            <td>{{ res.stockName }} </td>
+            <td>{{ res.stockPrice }} </td>
+            <td><a href = '/selectImport/{{ res.stockCode }}'>選擇 </a></td>
+        </tr>
+        {% endfor %}
+    
+    </table>
+
+    </body>
+</html>

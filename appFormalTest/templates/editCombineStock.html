@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>
+
+        <form method='post'>
+            {% csrf_token %}
+            類別: <input type="text" name="stockType" value={{queryRes.stockType}}> <br>
+            編號: <input type="text" name="stockCode" value={{queryRes.stockCode}}> <br>
+            名稱: <input type="text" name="stockName" value="{{queryRes.stockName}}"> <br>
+            牌價: <input type="number" name="stockPrice" value={{queryRes.stockPrice}}> <br>
+            數量: <input type="number" name="stockQua" value={{queryRes.stockQua}}> <br>
+            
+            
+
+            加入商品:　<input type="number">
+            <input type="submit" value="查詢" name="searchStock">
+            <table border="1" cellpadding="0" cellspacing="0">
+                <th>類別</th>
+                <th>編號</th>
+                <th>名稱</th>
+                <th>牌價</th>
+        
+                {% for res1 in stockCombineSet %}    
+                <tr>
+                    <td>{{ res1.stockType }} </td>
+                    <td>{{ res1.stockCode }} </td>
+                    <td>{{ res1.stockName }} </td>
+                    <td>{{ res1.stockPrice }} </td>
+                    <td><a href='/editCombineStockAdd/{{stockC}}/{{res1.stockCode}}'>新增</a></td>
+                </tr>
+                {% endfor %}
+            
+            </table>
+            
+            <br>
+            組合中的商品:
+            <table border="1" cellpadding="0" cellspacing="0">
+                <th>類別</th>
+                <th>編號</th>
+                <th>名稱</th>
+                <th>牌價</th>
+                <th></th>
+        
+                {% for res2 in stockSetInCombine %}
+                <tr>
+                    <td>{{ res2.stockType }} </td>
+                    <td>{{ res2.stockCode }} </td>
+                    <td>{{ res2.stockName }} </td>
+                    <td>{{ res2.stockPrice }} </td>
+                    <td><a href='/editCombineStockDelete/{{stockC}}/{{res2.stockCode}}'>刪除</a></td>
+                </tr>
+                {% endfor %} 
+            </table>   
+            <input type="submit" value="儲存" name="save">
+        </form>
+
+
+    </body>
+
+</html>

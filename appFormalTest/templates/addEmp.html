@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>
+
+        <form method='post'>
+            {% csrf_token %}
+            姓名: <input type="text" name="empName"> <br>
+            編號: <input type="text" name="empCode"> <br>
+            電話: <input type="text" name="empPhoneNum"> <br>
+            生日: <input type="date" name="empBirthDate"> <br>
+            住址: <input type="text" name="empAdd"> <br>
+            職位: <input type="text" name="empClass"> <br>
+                
+            <input type="submit" value="新增">
+        </form>
+    </body>
+
+</html>

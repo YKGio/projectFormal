@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+    <body>
+        <table border="1" cellpadding="0" cellspacing="0">
+            <th>員工</th>
+            <th>底薪</th>
+            <th>商品計積結果</th>
+            <th>專業操作計積結果</th>
+            <th>洗頭計積結果</th>
+            <th>吹整造型計積結果</th>
+            <th>商品收入提成結果</th>
+            <th>商品收入</th>
+            <th>頭皮護理收入提成結果</th>
+            <th>頭皮護理收入</th>
+            <th>洗剪染燙收入提成結果</th>
+            <th>洗剪染燙收入</th>
+            <th>結果</th>
+            <th></th>
+
+            {% for res in SR %}
+            <tr>
+                <td>{{ res.SRempName }} </td>
+                <td>{{ res.SRsalary }} </td>
+                <td>{{ res.SRpoint }} </td>
+                <td>{{ res.SRpoint1 }} </td>
+                <td>{{ res.SRpoint2 }} </td>
+                <td>{{ res.SRpoint3 }} </td>
+                <td>{{ res.SRstockIncomeComm }} </td>
+                <td>{{ res.SRincome }} </td>
+                <td>{{ res.SRSCIncomeComm }} </td>
+                <td>{{ res.SRSCIncome }} </td>
+                <td>{{ res.SRbarberIncomeComm }} </td>
+                <td>{{ res.SRbarberIncome }} </td>
+                <td>{{ res.SRresult }} </td>
+            </tr>
+            {% endfor %} 
+        </table>   
+    </body>
+</html>
+

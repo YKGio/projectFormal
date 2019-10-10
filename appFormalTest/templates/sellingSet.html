@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>    
+            
+        客戶擁有課程:<br>
+        <table border="1" cellpadding="0" cellspacing="0">
+            <th>顧客編號</th>
+            <th>課程編號</th>
+            <th>剩餘堂數</th>
+            <th></th>
+    
+            {% for res in cusOwnSetSet %}
+            <tr>
+                <td>{{ res.ownCusCode }} </td>
+                <td>{{ res.ownSetCode }} </td>
+                <td>{{ res.ownQua }} </td>
+                <td><a href='/deduct/{{res.ownCusCode}}/{{res.ownSetCode}}'>扣點</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </body>
+
+</html>

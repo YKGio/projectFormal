@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>
+
+        <form method='post'>
+            {% csrf_token %}
+            要加入的商品名稱: <input type="text" name="stockName">
+                
+            <input type="submit" value="查詢" name="searchStock">
+        </form>
+            
+            <table border="1" cellpadding="0" cellspacing="0">
+                <th>類別</th>
+                <th>編號</th>
+                <th>名稱</th>
+                <th>牌價</th>
+                <th></th>
+        
+                {% for res in queryRes %}
+                <tr>
+                    <td>{{ res.stockType }} </td>
+                    <td>{{ res.stockCode }} </td>
+                    <td>{{ res.stockName }} </td>
+                    <td>{{ res.stockPrice }} </td>
+                    <td>{{ res.stockQua }} </td>
+                    <td><a href='/combineStock/{{res.stockCode}}'>新增</a></td>
+                </tr>
+                {% endfor %} 
+            </table>              
+            
+            組合中的商品:<br/>
+            <table border="1" cellpadding="0" cellspacing="0">
+                <th>類別</th>
+                <th>編號</th>
+                <th>名稱</th>
+                <th>牌價</th>
+                <th></th>
+        
+                {% for res2 in stockSetInCombine %}
+                <tr>
+                    <td>{{ res2.stockType }} </td>
+                    <td>{{ res2.stockCode }} </td>
+                    <td>{{ res2.stockName }} </td>
+                    <td>{{ res2.stockPrice }} </td>
+                    <td><a href='/combineStockDelete/{{completeComCode}}/{{res2.stockCode}}'>刪除</a></td>
+                </tr>
+                {% endfor %} 
+            </table>   
+
+            <form method='post'>
+                {% csrf_token %}
+                組合名稱: <input type="text" name="combineName"><br>
+                組合價格: <input type="text" name="combinePrice"><br>
+                <input type="submit" value="完成" name="completeCombine">
+            </form>
+
+    </body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>
+
+        <form method="POST">
+            {% csrf_token %}  
+            選擇要計算的員工:
+            <input type="text" name="searchEmp">
+            <input type="submit" name="searchThis" value="查詢本店">
+        </form>
+        <table border="1" cellpadding="0" cellspacing="0">
+            <th>姓名</th>
+            <th>編號</th>
+            <th>電話</th>
+            <th>職位</th>
+            <th>所屬分店</th>
+
+            {% for res in queryRes %}    
+            <tr>
+                <td>{{ res.empName }}</td>
+                <td>{{ res.empCode }} </td>
+                <td>{{ res.empPhoneNum }} </td>
+                <td>{{ res.empClass }} </td>
+                <td>{{ res.empShop }} </td>
+                <td><a href = '/salarySelectEmp/{{res.empCode}}'>選擇 </a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        已選擇的員工:<br>
+        <table border="1" cellpadding="0" cellspacing="0">
+            <th>姓名</th>
+            <th>編號</th>
+
+            {% for emp in selectedEmp %}    
+            <tr>
+                <td>{{ emp.empName }}</td>
+                <td>{{ emp.empCode }} </td>
+                <td><a href = '/delete/{{ res.empCode }}'>刪除 </a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <form method="POST">
+            {% csrf_token %}
+            選擇時間區間從
+            <input type="date" name="dateFrom">
+            到
+            <input type="date" name="dateTo"><br>
+            <input type="submit" name="compute" value="計算">
+        </form>
+    </body>
+</html>

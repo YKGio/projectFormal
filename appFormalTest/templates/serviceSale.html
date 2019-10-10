@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>
+        <form method="POST">
+            {% csrf_token %}
+            銷售顧客: <input type="text" name="cusSearch", value="{{ saleAll.setCusCode }}">
+
+            <input type="submit" value="查詢顧客" name="cusBut">
+        </form>
+
+        <table border="1" cellpadding="0" cellspacing="0">
+            <th>姓名</th>
+            <th>編號</th>
+            <th>電話</th>
+
+            {% for res in cusSearchRes %}    
+            <tr>
+                <td>{{ res.cusName }} </td>
+                <td>{{ res.cusCode }} </td>
+                <td>{{ res.cusPhoneNum }} </td>
+                <td><a href='/setSaleCus/{{res.cusCode}}'>選取</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <form method="POST">
+            {% csrf_token %}
+            服務項目搜尋: 
+            <input type="text" name="searchSevice", value="{{saleAll.setCode}}">
+            <input type="submit" name="searchBut" value="搜尋">
+        </form>
+        <table border="1" cellpadding="0" cellspacing="0">
+            <th>服務名稱</th>
+            <th>服務編號</th>
+            <th>價格</th>
+
+            {% for res in searchRes %}
+            <tr>
+                <td>{{ res.stockName }} </td>
+                <td>{{ res.stockCode }} </td>
+                <td>{{ res.stockPrice }} </td>
+                <td><a href='/setSaleStock/{{res.stockCode}}'>選取</a></td>
+            </tr>
+            {% endfor %} 
+        </table>   
+
+        <form method="POST">
+            {% csrf_token %}
+            銷售員工1    : <input type="text" name="empSearch", value="{{ saleAll.setEmp1Code }}">
+
+            <input type="submit" value="查詢本店員工" name="empBut1">
+            <input type="submit" value="查詢所有員工" name="empAllBut1">
+        </form>
+
+        <table border="1" cellpadding="0" cellspacing="0">
+            <th>姓名</th>
+            <th>編號</th>
+            <th>電話</th>
+            <th>所屬分店</th>
+            <th>職位</th>
+            <th></th>
+
+            {% for res1 in queryRes1 %}    
+            <tr>
+                <td>{{ res1.empName }} </td>
+                <td>{{ res1.empCode }} </td>
+                <td>{{ res1.empPhoneNum }} </td>
+                <td>{{ res1.empShop }} </td>
+                <td>{{ res1.empClass }} </td>
+                <td><a href='/sercieSaleEmp1/{{res1.empCode}}'>選取</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <form method="POST">
+            {% csrf_token %}
+            銷售員工2    : <input type="text" name="empSearch", value="{{ saleAll.setEmp2Code }}">
+
+            <input type="submit" value="查詢本店員工" name="empBut2">
+            <input type="submit" value="查詢所有員工" name="empAllBut2">
+        </form>
+
+        <table border="1" cellpadding="0" cellspacing="0">
+            <th>姓名</th>
+            <th>編號</th>
+            <th>電話</th>
+            <th>所屬分店</th>
+            <th>職位</th>
+            <th></th>
+
+            {% for res2 in queryRes2 %}    
+            <tr>
+                <td>{{ res2.empName }} </td>
+                <td>{{ res2.empCode }} </td>
+                <td>{{ res2.empPhoneNum }} </td>
+                <td>{{ res2.empShop }} </td>
+                <td>{{ res2.empClass }} </td>
+                <td><a href='/sercieSaleEmp2/{{res2.empCode}}'>選取</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <form method="POST">
+            {% csrf_token %}
+            銷售員工3    : <input type="text" name="empSearch", value="{{ saleAll.setEmp3Code  }}">
+
+            <input type="submit" value="查詢本店員工" name="empBut3">
+            <input type="submit" value="查詢所有員工" name="empAllBut3">
+        </form>
+
+        <table border="1" cellpadding="0" cellspacing="0">
+            <th>姓名</th>
+            <th>編號</th>
+            <th>電話</th>
+            <th>所屬分店</th>
+            <th>職位</th>
+            <th></th>
+
+            {% for res3 in queryRes3 %}    
+            <tr>
+                <td>{{ res3.empName }} </td>
+                <td>{{ res3.empCode }} </td>
+                <td>{{ res3.empPhoneNum }} </td>
+                <td>{{ res3.empShop }} </td>
+                <td>{{ res3.Class }} </td>
+                <td><a href='/sercieSaleEmp3/{{res3.empCode}}'>選取</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <form method="POST">
+            {% csrf_token %}
+            銷售日期: <input type="date" name="saleDate"></br>
+            銷售分店: <input type = "text" name = "saleShop" value="{{damn}}"></br>
+            銷售價格: <input type = "text" name = "salePrice" value="{{oneCoursePrice}}"></br>
+            銷售計積: <input type = "text" name = "salePoint"></br>
+            收入類別:         
+            <select name="selectSaleType">
+                <option value="scalpCare">頭皮護理收入</option>
+                <option value="barber">洗剪染燙收入</option>
+                <option value="stock">一般商品收入</option>
+                <option value="set">儲值卡收入</option>
+            </select><br>
+            備註: <input type = "text" name = "saleRemark">
+
+            <input type="submit" value="完成" name="completeDeduct"> 
+        </form>
+
+    </body>
+
+</html>

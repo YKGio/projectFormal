@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br>
+
+        <form method="POST">
+            {% csrf_token %}
+            名稱: <input type="text" value="{{editSalaryNow.MSPName}}" name="MSPName"><br>
+            編號: <input type="text" value="{{editSalaryNow.MSPCode}}" name="MSPCode"><br>
+            專業操作: <input type="text" value="{{editSalaryNow.MSPemp1}}" name="MSPemp1"><br>
+            洗頭: <input type="text" value="{{editSalaryNow.MSPemp2}}" name="MSPemp2"><br>
+            吹整造型: <input type="text" value="{{editSalaryNow.MSPemp3}}" name="MSPemp3"><br>
+            <input type="submit" name="completeEdit" value="完成">
+        </form>
+    </body>
+</html>
+

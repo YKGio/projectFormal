@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>
+
+        <form method="POST">
+            {% csrf_token %}
+            員工查詢: <input type="text" name="empSearch">
+
+            <input type="submit" value="查詢本店員工" name="searchEmp">
+            <input type="submit" value="查詢全部員工" name="searchAllEmp">
+        </form>
+
+        <a href='/addEmp'>新員工</a>
+
+        <table border="1" cellpadding="0" cellspacing="0">
+            <th>姓名</th>
+            <th>編號</th>
+            <th>電話</th>
+            <th>生日</th>
+            <th>住址</th>
+            <th>所屬分店</th>
+            <th>職位</th>
+            <th></th>
+
+            {% for res in queryRes %}    
+            <tr>
+                <td><a href = '/editEmp/{{ res.empCode }}'>{{ res.empName }}</a></td>
+                <td>{{ res.empCode }} </td>
+                <td>{{ res.empPhoneNum }} </td>
+                <td>{{ res.empBirthDate }} </td>
+                <td>{{ res.empAdd }} </td>
+                <td>{{ res.empShop }} </td>
+                <td>{{ res.empClass }} </td>
+                <td><a href = '/delete/{{ res.empCode }}'>刪除 </a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

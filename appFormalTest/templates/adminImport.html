@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+
+    <a href='/administrator'>回目錄</a><br/>
+
+    選擇中的商品:<br>
+    <table border="1" cellpadding="0" cellspacing="0">
+        <th>類別</th>
+        <th>編號</th>
+        <th>名稱</th>
+        <th>牌價</th>
+
+        <tr>
+            <td>{{ selectImportStock.stockType }} </td>
+            <td>{{ selectImportStock.stockCode }} </td>
+            <td>{{ selectImportStock.stockName }} </td>
+            <td>{{ selectImportStock.stockPrice }} </td>
+        </tr>
+    </table>
+
+    <form method='post'>
+        {% csrf_token %}
+        進貨
+        <input type="number" placeholder="數量" name="selectImportQua">
+        個<br>
+
+        <input type="submit" name='completeImport' value="完成">
+    </form>
+
+    </body>
+</html>

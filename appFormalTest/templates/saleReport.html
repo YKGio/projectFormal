@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>
+        <form method="POST">
+            {% csrf_token %}
+            選擇報表:
+            <select name="selectSection">
+                <option value="">---</option>
+                <option value="seleReport">銷售紀錄</option>
+                <option value="setSaleReport">課程扣點紀錄</option>
+                <option value="importReport">進出貨紀錄</option>
+            </select><br>
+            依照
+            <select name="selectOrder">
+                <option value="orderDateFromOld">日期從舊到新</option>
+                <option value="orderDateFromNew">日期從新到舊</option>
+            </select>
+            排序
+            <input type="submit" name="exportReport" value="查詢">
+        </form>
+
+        <table border="1" cellpadding="0" cellspacing="0">
+            <th>日期</th>
+            <th>單號</th>
+            <th>銷售客戶</th>
+            <th>銷售商品</th>
+            <th>銷售員工</th>
+            <th>銷售數量</th>
+            <th>銷售價格</th>
+            <th>銷售計積</th>
+            <th>備註</th>
+    
+            {% for res in saleAll %}    
+            <tr>
+                <td>{{ res.saleDate }} </td>
+                <td>{{ res.saleCode }} </td>
+                <td>{{ res.saleCusCode }} </td>
+                <td>{{ res.saleStockCode }} </td>
+                <td>{{ res.saleEmpCode }} </td>
+                <td>{{ res.saleQua }} </td>
+                <td>{{ res.salePrice }} </td>
+                <td>{{ res.salePoint }} </td>
+                <td>{{ res.saleRemark }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </body>
+</html>

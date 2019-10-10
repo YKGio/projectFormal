@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br/>
+
+        <form method='post'>
+            {% csrf_token %}
+            姓名: <input type="text" name="empName" value={{queryRes.empName}}> <br>
+            編號: <input type="text" name="empCode" value={{queryRes.empCode}}> <br>
+            電話: <input type="text" name="empPhoneNum" value={{queryRes.empPhoneNum}}> <br>
+            住址: <input type="text" name="empAdd" value={{queryRes.empAdd}}> <br>
+            職位: <input type="text" name="empClass" value={{queryRes.empClass}}> <br>  
+            <input type="submit" value="儲存">
+        </form>
+    </body>
+
+</html>

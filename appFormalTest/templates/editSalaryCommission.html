@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>管理系統</title>
+    </head>
+    <body>
+        <a href='/redirectIndex'>回目錄</a><br>
+
+        <form method="POST">
+            {% csrf_token %}
+            名稱: <input type="text" value="{{editCommNow.commName}}" name="commName"><br>
+            編號: <input type="text" value="{{editCommNow.commCode}}" name="commCode"><br>
+
+            新增門檻:
+            <input type="text" name="newCLLimit">
+            <input type="text" name="newCLPercent">
+            <input type="submit" name="addNewCL" value="新增"><br>
+
+            <table border="1" cellpadding="0" cellspacing="0">
+                    <th>收入門檻</th>
+                    <th>提成百分比</th>
+                
+                    {% for res in editCLNow %}    
+                    <tr>
+                        <td>{{ res.CLIncomeLimit }}</td>
+                        <td>{{ res.CLBonusPercent }}</td>
+                        <td><a href='/deleteCL/{{res.comm_commCode}}/{{res.CLCode}}'>刪除</a><br></td>
+                    </tr>
+                    {% endfor %}
+            </table>
+
+            <input type="submit" name="completeEdit" value="完成">
+        </form>
+    </body>
+</html>
+
+
